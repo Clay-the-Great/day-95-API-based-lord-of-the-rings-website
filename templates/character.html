@@ -1,0 +1,74 @@
+{% include "header.html" %}
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('/static/img/characters-image.webp')">
+<!--  <header class="masthead" style="background-image: url('https://images.unsplash.com/photo-1470092306007-055b6797ca72?ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80')">-->
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>{{character.docs[0].name}}</h1>
+            <span class="subheading">{{character.docs[0].gender}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+
+        <div class="post-preview">
+          <a href="#">
+            <h2 class="post-title">
+              {{character.docs[0].name}}
+            </h2>
+          </a>
+            <h4 class="post-subtitle">
+              Height: {{character.docs[0].height if character.docs[0].height else "Unknown"}}
+            </h4>
+            <h4 class="post-subtitle">
+              Race: {{character.docs[0].race if character.docs[0].race else "Unknown"}}
+            </h4>
+            <h4 class="post-subtitle">
+              Gender: {{character.docs[0].gender if character.docs[0].gender else "Unknown"}}
+            </h4>
+            <h4 class="post-subtitle">
+              Birth: {{character.docs[0].birth if character.docs[0].birth else "Unknown"}}
+            </h4>
+            <h4 class="post-subtitle">
+              Spouse: {{character.docs[0].spouse if character.docs[0].spouse else "Unknown"}}
+            </h4>
+            <h4 class="post-subtitle">
+              Death: {{character.docs[0].death if character.docs[0].death else "Unknown"}}
+            </h4>
+            <h4 class="post-subtitle">
+              Realm: {{character.docs[0].realm if character.docs[0].realm else "Unknown"}}
+            </h4>
+            <h4 class="post-subtitle">
+              Hair: {{character.docs[0].hair if character.docs[0].hair else "Unknown"}}
+            </h4>
+            <h4 class="post-subtitle">
+              Wikipedia URL: <a href="{{character.docs[0].wikiUrl if character.docs[0].wikiUrl else '#'}}">Wiki Link</a>
+            </h4>
+            <hr>
+          {%for quote in quotes.docs:%}
+          <a href="{{ url_for('get_movie', movie_id=quote.movie) }}">
+            <p class="post-subtitle">
+              Movie quote: {{ quote.dialog }}
+            </p>
+          </a>
+          {% endfor %}
+
+        </div>
+        <hr>
+
+      </div>
+    </div>
+  </div>
+  <hr>
+
+{% include "footer.html" %}
